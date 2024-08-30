@@ -6,7 +6,8 @@ import { StoreContext } from '../../Context/StoreContext';
 const FoodItem = ({ image, name, price, desc , id }) => {
 
     const [itemCount, setItemCount] = useState(0);
-    const {cartItems,addToCart,removeFromCart,url,currency} = useContext(StoreContext);
+    const {cartItems,addToCart,removeFromCart,currency} = useContext(StoreContext);
+    const url="http://localhost:8000"
 
     return (
         <div className='food-item'>
