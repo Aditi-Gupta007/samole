@@ -1,5 +1,5 @@
 .sidebar{
-    width: 18%;
+    width: 250px;
     min-height: 100vh;
     border: 1.5px solid #A9A9A9;
     border-top: 0;
@@ -40,4 +40,8 @@
     .sidebar-option p{
        display: none;
     }
+}
+.outlet{
+    width:100%;
+    padding:none;
 }

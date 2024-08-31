@@ -8,10 +8,10 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { Outlet } from 'react-router-dom'
-
+import "./admin.css"
 const AdminPage = () => {
   return (
-    <div className='app'>
+    <div className='admin'>
       <h2>Admin DashBoard</h2>
       <ToastContainer />
       {/* <Navbar /> */}

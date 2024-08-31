@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './List.css'
-// import {  currency } from '../../assets/assets'
+import { assets } from '../../assets/assets.js'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -38,7 +38,7 @@ const List = () => {
 
   return (
     <div className='list add flex-col'>
-      <p>All Foods List</p>
+      <h1>All Plants List</h1>
       <div className='list-table'>
         <div className="list-table-format title">
           <b>Image</b>
@@ -54,7 +54,7 @@ const List = () => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{item.price}</p>
-              <p className='cursor' onClick={() => removeFood(item._id)}>x</p>
+              <p className='cursor' onClick={() => removeFood(item._id)}><img src={assets.removelist} ></img></p>
             </div>
           )
         })}
