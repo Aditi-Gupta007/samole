@@ -14,10 +14,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
 import AdminPage from './pages/adminPage/admin'
 import Profile from './pages/Profile/Profile'
+import Product from './pages/singleProduct/Product'
+import { productLoader } from './Loaders/loader'
 
 const App = () => {
 
   const [showLogin,setShowLogin] = useState(false);
+  
 
   return (
     <>
@@ -28,6 +31,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/product/:id" element={<Product/> } />
           
           <Route path="/admin/*" element={<AdminPage />}>
             <Route path="add" element={<Add />} />

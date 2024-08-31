@@ -51,5 +51,17 @@ const removeFood = async (req, res) => {
     }
 
 }
+const getProduct = async (req, res) => {
+    try {
+        const item = await plantModel.findById(req.params.id);
+        // console.log(item)
+        res.json({ success: true, product:item })
 
-export { listFood, addFood, removeFood }
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+
+}
+
+export { listFood, addFood, removeFood,getProduct }

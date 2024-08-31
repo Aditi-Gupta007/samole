@@ -10,7 +10,7 @@ const List = () => {
   const url="http://localhost:8000"
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`)
+    const response = await axios.get(`${url}/api/food/products`)
     if (response.data.success) {
       setList(response.data.data);
     }

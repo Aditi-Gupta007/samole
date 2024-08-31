@@ -1,16 +1,20 @@
 import React, { useContext, useState } from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
+import axios from 'axios'
 import { StoreContext } from '../../Context/StoreContext';
+import {useNavigate} from 'react-router-dom'
 
 const FoodItem = ({ image, name, price, desc , id }) => {
 
     // const [itemCount, setItemCount] = useState(0);
+    const navigate=useNavigate()
     // const {cartItems,addToCart,removeFromCart,currency} = useContext(StoreContext);
     const url="http://localhost:8000"
 
+
     return (
-        <div className='food-item'>
+        <div className='food-item' onClick={()=>navigate(`/product/${id}`)}>
             <div className='food-item-img-container'>
                 <img className='food-item-image' src={url+"/images/"+image} alt="" />
                 <img className='add'  src={assets.add_icon_white} alt="" />
