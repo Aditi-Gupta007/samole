@@ -26,11 +26,14 @@ const loginUser = async (req,res) => {
 
         const token = createToken(user._id);
         console.log(token);
+
+       
         const userObject = user.toObject();
         const {password:userPassword,...userInfo}=userObject;
         console.log(user);
+        if(user.isAdmin==true) return res.json({success:true, admin:true,token,userInfo});
         
-        res.json({success:true,token, userInfo})
+        res.json({success:true,token, userInfo,admin:false});
     } catch (error) {
         console.log(error);
         res.json({success:false,message:"Error"})
@@ -69,5 +72,21 @@ const registerUser = async (req,res) => {
         res.json({success:false,message:"Error"})
     }
 }
+const getUser=async(req,res)=>
+{
+    try {
+        const userId = req.params.id;
+        const user = await userModel.findById(userId).select('-password'); // Exclude the password field
+    
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+        if(user.isAdmin) return res.json({user,admin:true});
+        res.json({user,admin:false});
+      } catch (err) {
+        res.status(500).json({ error: 'Server error' });
+      }
+  
+}
 
-export {loginUser, registerUser}
+export {loginUser, registerUser,getUser}

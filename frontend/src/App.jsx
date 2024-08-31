@@ -12,6 +12,8 @@ import MyOrders from './pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify/Verify'
+import AdminPage from './pages/adminPage/admin'
+import Profile from './pages/Profile/Profile'
 
 const App = () => {
 
@@ -25,8 +27,13 @@ const App = () => {
         <Navbar setShowLogin={setShowLogin}/>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path="/add" element={<Add />}/>
-          <Route path="/list" element={<List />}/>
+          <Route path="/profile" element={<Profile />} />
+          
+          <Route path="/admin/*" element={<AdminPage />}>
+            <Route path="add" element={<Add />} />
+            <Route path="list" element={<List />} />
+            <Route path="profile" element={<AdminPage />} />
+          </Route>
         </Routes>
       </div>
       <Footer />

@@ -1,0 +1,49 @@
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    margin-bottom: 40px;;
+  }
+
+  .info{
+    display: flex;
+    gap:50px;
+  }
+  .info .avatar{
+    height:150px;
+    width:150px;
+    border-radius: 50%;;
+  }
+  .info .avatar img{
+    width:100%;
+    height:100%;
+    border-radius: 50%;;
+  }
+  .info .user
+{
+  display: flex;
+  flex-direction: column;
+  gap:15px;
+  color: black;
+  text-align: left;
+  /* justify-content: space-around; */
+  align-items: flex-end;
+}
+.user .name
+{
+  margin-top: 15%;;
+  color: black;
+  font-size: 30px;
+}
+.user .email
+{
+  font-size: 18px;
+  color: #7f7f7f;
+  margin-top: 0;
+}
+.info .logout
+{
+  margin-top: 10px;
+  background-color:aliceblue;
+  color: red;
+}

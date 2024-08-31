@@ -19,10 +19,19 @@ const StoreContextProvider = (props) => {
     const update=(data)=>
     {
       setCurrentUser(data);
+      if (data) {
+        setToken(localStorage.getItem("token"));
+    } else {
+        setToken("");
+    }
     }
     useEffect(()=>
         {
-          localStorage.setItem("user",JSON.stringify(currentUser));
+            if (currentUser) {
+                localStorage.setItem("user", JSON.stringify(currentUser));
+              } else {
+                localStorage.removeItem("user"); // Clear the user data from localStorage on logout
+              } 
         },[currentUser]);
     
 

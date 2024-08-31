@@ -2,7 +2,7 @@ import basket_icon from './basket_icon.png'
 import logo from './logo.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
-
+import upload_area from './upload_area.png'
 import menu_3 from './menu_3.png'
 import menu_4 from './menu_4.png'
 import menu_5 from './menu_5.png'
@@ -64,7 +64,7 @@ import un_checked from './un_checked.png'
 export const assets = {
     logo,
     basket_icon,
-
+    upload_area,
     search_icon,
     rating_starts,
     add_icon_green,

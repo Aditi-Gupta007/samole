@@ -4,6 +4,11 @@
     border: 1.5px solid #A9A9A9;
     border-top: 0;
 }
+.container
+{
+    display: flex;
+    gap:20px;
+}
 .sidebar-options{
     padding-top: 50px;
     padding-left: 20%;

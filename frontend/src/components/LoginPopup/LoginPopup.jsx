@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react'
 import './LoginPopup.css'
+import {useNavigate} from 'react-router-dom'
 import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
+// eslint-disable-next-line react/prop-types
 const LoginPopup = ({ setShowLogin }) => {
+    const navigate=useNavigate();
 
-    const { setToken, url ,update} = useContext(StoreContext)
+    const { setToken ,update} = useContext(StoreContext)
     const [currState, setCurrState] = useState("Sign Up");
 
 
@@ -38,10 +41,18 @@ const LoginPopup = ({ setShowLogin }) => {
             console.log(response);
             setToken(response.data.token);
             localStorage.setItem("token", response.data.token)
-            // update(response.data.user);
-            // localStorage.setItem("user", response.data.userInfo)
-            // loadCartData({token:response.data.token})
             setShowLogin(false)
+            // localStorage.setItem("user", response.data)
+            if(response.data.admin) 
+                {
+                    update(response.data.userInfo);
+                    localStorage.setItem("user", JSON.stringify(response.data.userInfo))
+                    return navigate('/admin');
+                }
+            update(response.data.userInfo);
+            navigate('./profile')
+            // loadCartData({token:response.data.token})
+            
         }
         else {
             toast.error(response.data.message)

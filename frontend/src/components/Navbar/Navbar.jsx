@@ -3,17 +3,36 @@ import './Navbar.css'
 import { assets } from '../../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../Context/StoreContext'
+import axios from 'axios'
 
 const Navbar = ({ setShowLogin }) => {
 
   const [menu, setMenu] = useState("home");
-  const { token ,setToken } = useContext(StoreContext);
+  const { token ,setToken ,update,currentUser} = useContext(StoreContext);
   const navigate = useNavigate();
-
+  const user=JSON.parse(localStorage.getItem('user'));
+  // let url='/profile'
+  // if(user.isAdmin)  url='/admin'
+  // console.log(url);
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    update(null)
     setToken("");
     navigate('/')
+  }
+
+  const goToProfile=async ()=>
+  {
+    try {
+      console.log(currentUser);
+      const res=await axios.get(`http://localhost:9000/api/user/${currentUser._id}`,{ headers: {token}});
+      console.log(res);
+      if( res.data.admin) navigate('/admin');
+      else navigate('./profile')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -34,7 +53,7 @@ const Navbar = ({ setShowLogin }) => {
           : <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="" />
             <ul className='navbar-profile-dropdown'>
-              <li onClick={()=>navigate('/myorders')}> <img src={assets.bag_icon} alt="" /> <p>Orders</p></li>
+              <li onClick={goToProfile}> <img src={assets.bag_icon} alt="" /> <p>Profile</p></li>
               <hr />
               <li onClick={logout}> <img src={assets.logout_icon} alt="" /> <p>Logout</p></li> 
             </ul>
