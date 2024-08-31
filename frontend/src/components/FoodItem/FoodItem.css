@@ -13,7 +13,7 @@
     position: relative;
 }
 .food-item-img-container .add{
-    width: 40px;
+    width: 35px;
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -44,6 +44,8 @@
 }
 .food-item-info{
     padding: 20px;
+    max-height:150px;
+    min-height:150px
 }
 .food-item-name-rating{
     display: flex;
