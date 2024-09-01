@@ -1,11 +1,11 @@
-import plantModel from "../models/foodModel.js";
+import plantModel from "../models/plantModel.js";
 import fs from 'fs'
 
-// all food list
-const listFood = async (req, res) => {
+// all plant list
+const listplant = async (req, res) => {
     try {
-        const foods = await plantModel.find({})
-        res.json({ success: true, data: foods })
+        const plants = await plantModel.find({})
+        res.json({ success: true, data: plants })
     } catch (error) {
         console.log(error);
         res.json({ success: false, message: "Error" })
@@ -13,13 +13,13 @@ const listFood = async (req, res) => {
 
 }
 
-// add food
-const addFood = async (req, res) => {
+// add plant
+const addplant = async (req, res) => {
 
     try {
         let image_filename = `${req.file.filename}`
 
-        const food = new plantModel({
+        const plant = new plantModel({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
@@ -27,7 +27,7 @@ const addFood = async (req, res) => {
             image: image_filename,
         })
 
-        await food.save();
+        await plant.save();
         res.json({ success: true, message: "Plant Added" })
     } catch (error) {
         console.log(error);
@@ -35,12 +35,12 @@ const addFood = async (req, res) => {
     }
 }
 
-// delete food
-const removeFood = async (req, res) => {
+// delete plant
+const removeplant = async (req, res) => {
     try {
 
-        const food = await plantModel.findById(req.body.id);
-        fs.unlink(`uploads/${food.image}`, () => { })
+        const plant = await plantModel.findById(req.body.id);
+        fs.unlink(`uploads/${plant.image}`, () => { })
 
         await plantModel.findByIdAndDelete(req.body.id)
         res.json({ success: true, message: "Plant Removed" })
@@ -64,4 +64,4 @@ const getProduct = async (req, res) => {
 
 }
 
-export { listFood, addFood, removeFood,getProduct }
+export { listplant, addplant, removeplant,getProduct }

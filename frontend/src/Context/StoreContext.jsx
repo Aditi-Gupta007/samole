@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
 
 
     const url = "http://localhost:4000"
-    const [food_list, setFoodList] = useState([]);
+    const [plant_list, setplantList] = useState([]);
     // const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
     const currency = "₹";
@@ -58,20 +58,20 @@ const StoreContextProvider = (props) => {
     //     let totalAmount = 0;
     //     for (const item in cartItems) {
     //         if (cartItems[item] > 0) {
-    //             let itemInfo = food_list.find((product) => product._id === item);
+    //             let itemInfo = plant_list.find((product) => product._id === item);
     //             if (itemInfo) {
     //                 totalAmount += itemInfo.price * cartItems[item];
     //             } else {
-    //                 console.warn(`Item with ID ${item} not found in food_list.`);
+    //                 console.warn(`Item with ID ${item} not found in plant_list.`);
     //             }
     //         }
     //     }
     //     return totalAmount;
     // }
     
-    const fetchFoodList = async () => {
-        const response = await axios.get( "http://localhost:8000/api/food/products");
-        setFoodList(response.data.data)
+    const fetchplantList = async () => {
+        const response = await axios.get( "http://localhost:8000/api/plant/products");
+        setplantList(response.data.data)
     }
 
     // const loadCartData = async (token) => {
@@ -86,7 +86,7 @@ const StoreContextProvider = (props) => {
 
     useEffect(() => {
         async function loadData() {
-            await fetchFoodList();
+            await fetchplantList();
             if (localStorage.getItem("token")) {
                 setToken(localStorage.getItem("token"))
                 // await loadCartData({ token: localStorage.getItem("token") })
@@ -97,7 +97,7 @@ const StoreContextProvider = (props) => {
 
     const contextValue = {
         url,
-        food_list,
+        plant_list,
         menu_list,
         // cartItems,
         // addToCart,

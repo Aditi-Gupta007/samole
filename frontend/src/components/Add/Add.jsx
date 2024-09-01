@@ -28,7 +28,7 @@ const Add = () => {
         formData.append("price", Number(data.price));
         formData.append("category", data.category);
         formData.append("image", image);
-        const response = await axios.post("http://localhost:8000/api/food/add", formData);
+        const response = await axios.post("http://localhost:8000/api/plant/add", formData);
         if (response.data.success) {
             toast.success(response.data.message)
             setData({

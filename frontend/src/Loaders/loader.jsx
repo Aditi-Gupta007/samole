@@ -4,7 +4,7 @@ const productLoader=async ({params})=>
 {
     const {id}=params;
     try {
-        const res=await axios.get(`http://localhost:8000/api/food/${id}`);
+        const res=await axios.get(`http://localhost:8000/api/plant/${id}`);
         console.log(res)
         if(res.data.success) 
         {

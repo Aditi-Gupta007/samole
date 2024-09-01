@@ -11,7 +11,7 @@ export default function Product() {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/food/${id}`);
+                const res = await axios.get(`http://localhost:8000/api/plant/${id}`);
                 if (res.data.success) {
                     setProduct(res.data.product);
                 }

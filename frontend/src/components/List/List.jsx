@@ -10,7 +10,7 @@ const List = () => {
   const url="http://localhost:8000"
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/products`)
+    const response = await axios.get(`${url}/api/plant/products`)
     if (response.data.success) {
       setList(response.data.data);
     }
@@ -19,9 +19,9 @@ const List = () => {
     }
   }
 
-  const removeFood = async (foodId) => {
-    const response = await axios.post(`${url}/api/food/remove`, {
-      id: foodId
+  const removeplant = async (plantId) => {
+    const response = await axios.post(`${url}/api/plant/remove`, {
+      id: plantId
     })
     await fetchList();
     if (response.data.success) {
@@ -54,7 +54,7 @@ const List = () => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>{item.price}</p>
-              <p className='cursor' onClick={() => removeFood(item._id)}><img src={assets.removelist} ></img></p>
+              <p className='cursor' onClick={() => removeplant(item._id)}><img src={assets.removelist} ></img></p>
             </div>
           )
         })}

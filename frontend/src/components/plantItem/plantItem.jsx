@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
-import './FoodItem.css'
+import './PlantItem.css'
 import { assets } from '../../assets/assets'
 import axios from 'axios'
 import { StoreContext } from '../../Context/StoreContext';
 import {useNavigate} from 'react-router-dom'
 
-const FoodItem = ({ image, name, price, desc , id }) => {
+const PlantItem = ({ image, name, price, desc , id }) => {
 
     // const [itemCount, setItemCount] = useState(0);
     const navigate=useNavigate()
@@ -14,21 +14,21 @@ const FoodItem = ({ image, name, price, desc , id }) => {
 
 
     return (
-        <div className='food-item' onClick={()=>navigate(`/product/${id}`)}>
-            <div className='food-item-img-container'>
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+        <div className='plant-item' onClick={()=>navigate(`/product/${id}`)}>
+            <div className='plant-item-img-container'>
+                <img className='plant-item-image' src={url+"/images/"+image} alt="" />
                 <img className='add'  src={assets.add_icon_white} alt="" />
             </div>
-            <div className="food-item-info">
-                <div className="food-item-name-rating">
+            <div className="plant-item-info">
+                <div className="plant-item-name-rating">
                     <p>{name}</p> <img src={assets.rating_starts} alt="" />
                     
                 </div>
-                <p className="food-item-desc">{desc}</p>
-                <p className="food-item-price">₹{price}</p>
+                <p className="plant-item-desc">{desc}</p>
+                <p className="plant-item-price">₹{price}</p>
             </div>
         </div>
     )
 }
 
-export default FoodItem
+export default PlantItem
